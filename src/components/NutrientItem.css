@@ -1,0 +1,10 @@
+.nutrient-item {
+  text-align: right;
+  min-width: 65px;
+  font-weight: 500;
+  color: #6f7379;
+}
+
+.nutrient-item div {
+  font-size: 16px;
+}

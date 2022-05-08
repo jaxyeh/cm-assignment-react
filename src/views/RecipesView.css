@@ -1,0 +1,101 @@
+.recipes {
+}
+
+.search {
+  border: 1px solid #ebebeb;
+  padding: 16px 12px;
+  border-radius: 30px;
+  display: block;
+  margin-bottom: 12px;
+  width: 100%;
+  transition: all 0.15s ease-out;
+  font-size: 16px;
+  color: #282c37;
+}
+
+.search:focus {
+  outline: none;
+  border: 1px solid #1bc98e;
+}
+
+.list {
+  background: #fafbfc;
+}
+
+.recipe-name {
+  position: absolute;
+  top: 8px;
+  left: 71px; /* 8px margin + 55px image size + another 8px margin font-weight: 500; */
+}
+
+.recipe-item {
+  position: relative;
+  color: #282c37;
+  border-bottom: 1px solid #ebebeb;
+  margin-bottom: 6px;
+}
+
+.recipe-item .nutrient-item.carbs span {
+  color: #eb5350;
+}
+
+.recipe-item .nutrient-item.fat span {
+  color: #ec9e31;
+}
+
+.recipe-item .nutrient-item.protein span {
+  color: #3b77b1;
+}
+
+.recipe-item .nutrient-item.energy span {
+  color: #282c37;
+}
+
+.recipeImage {
+  position: relative;
+  display: block;
+  width: 55px;
+  height: 55px;
+  top: 8px;
+  margin-left: 8px;
+  border-radius: 4px;
+}
+
+.nutrients {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+}
+
+.nutrients > * {
+  margin: 0 8px;
+}
+
+.tags {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: 71px; /* 8px margin + 55px image size + another 8px margin */
+  display: flex;
+}
+
+.tags .tag {
+  display: block;
+  background: #ebeff4;
+  color: #6f7379;
+  padding: 4px 8px;
+  margin-right: 6px;
+  border-radius: 12px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.tags .tag.premium {
+  display: flex;
+}
+
+.tags .tag.premium .trophy {
+  width: 12px;
+  margin-right: 6px;
+}
