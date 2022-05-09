@@ -1,7 +1,7 @@
 import React from 'react';
 import "./NutrientItem.css";
 
-export default ({ name, value, className = '' }) => {
+const NutrientItem = ({ name, value, className = '' }) => {
   return (
     <div className={["nutrient-item", className].filter(Boolean).join(' ')}>
       {name && <div>{ name }</div>}
@@ -9,3 +9,5 @@ export default ({ name, value, className = '' }) => {
     </div>
   )
 }
+
+export default NutrientItem;

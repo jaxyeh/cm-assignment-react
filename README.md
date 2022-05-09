@@ -38,7 +38,6 @@ The project contains some poor code. The challenge is to identify the bad parts 
 - Feel free to create as many components/modules as you want
 - Feel free to install any library/tool you need
 - Feel free to use Redux/Context API
-- Feel free to use Composition API or Options API
 - Feel free to change the project settings (CRA settings, linters, etc)
 - Feel free to contact us any time if you have any questions about the assignment!
 

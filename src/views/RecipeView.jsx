@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from 'react-router-dom';
 import getRecipe from "../api/getRecipe";
 
-export default () => {
+const RecipeView = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = React.useState(null);
 
@@ -32,3 +32,5 @@ export default () => {
     </div>
   );
 };
+
+export default RecipeView;
