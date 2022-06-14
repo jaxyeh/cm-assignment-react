@@ -33,7 +33,6 @@ The project contains some poor code. The challenge is to identify the bad parts 
 
 - The `/recipe/:id` page just demonstrates that every recipe will use the same recipe model and will require the same problems to be solved.
   We don't expect you to write any code for a single recipe view, but we'd like you to have it in mind that such a view will be developed in the future.
-- Search for `TODO` and `FIXME` comments and address these issues.
 - Feel fee to use TypeScript or JavaScript
 - Feel free to create as many components/modules as you want
 - Feel free to install any library/tool you need

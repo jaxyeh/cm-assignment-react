@@ -45,7 +45,6 @@ const RecipesView = () => {
   }, [state.user]);
 
   const filterRecipes = React.useCallback((value) => {
-    // TODO: Make search results case-insensitive
     setState({
       ...state,
       isFiltered: value !== '',
@@ -88,7 +87,6 @@ const RecipesView = () => {
   const recipeList = state.isFiltered ? state.filteredRecipes : state.recipes;
   return (
     <div className="recipes">
-      {/* TODO: Create a generic <SearchInput> component */}
       {!state.error && (
         <>
           <input
@@ -97,7 +95,6 @@ const RecipesView = () => {
             type="text"
             onInput={({ target }) => filterRecipes(target.value)}
           />
-          { /* TODO: Add loading indicator */ }
           <div className="list">
           {recipeList.map((recipe, index) => (
             <div key={index} className="recipe-item" onClick={() => goToSingleRecipe(recipe.id)}>
@@ -160,7 +157,6 @@ const RecipesView = () => {
           </div>
         </>
       )}
-      {/* FIXME: Why the error message flashes in initial load? */}
       {!recipeList.length && <div>Unable to load recipes</div>}
     </div>
   );
