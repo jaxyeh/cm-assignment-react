@@ -58,7 +58,7 @@ We suggest you don't spend more than 2h on this challenge.
 
 ## Submission
 
-- **Clone** the repo (don't fork) to get started.
+- **Clone** the repo (don't fork) on your own GitHub account to get started.
 - Create a new branch
 - Commit all the changes to the new branch
 - Create a PR to `main` when you're done
