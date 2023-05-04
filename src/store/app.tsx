@@ -1,27 +1,27 @@
-import React from "react";
+import React, { FC, PropsWithChildren } from "react";
+import { User } from "../../server/user/types";
+// import getUser from "../api/getUser";
+// import { useQuery } from "@tanstack/react-query";
 
-const noop = () => undefined;
 interface AppContextType {
-  hello: string | null;
-  setHello: (value: string) => void;
+  user: User | null;
+  setUser: (user: User) => void;
 }
-const AppContext = React.createContext<AppContextType>({ hello: null, setHello: noop });
 
-interface UseAppStore {
-  children: React.ReactElement;
-}
-export function useAppStore({ children }: UseAppStore): React.ReactElement {
-  const [state, setState] = React.useState({ hello: "world" });
+export const AppContext = React.createContext<AppContextType>({
+  user: null,
+  setUser: () => undefined,
+});
 
-  const setHello = React.useCallback((value: string) => {
-    setState({ ...state, hello: value });
-  }, [state]);
+const AppProvider: FC<PropsWithChildren<unknown>> = ({ children }) => {
+  const [user, setUser] = React.useState<User | null>(null);
+  // useQuery({ queryKey: ["todos"], queryFn: getUser, onSuccess: setUser });
 
   return (
-    <AppContext.Provider value={{ hello: state.hello, setHello }}>
+    <AppContext.Provider value={{ user, setUser }}>
       {children}
     </AppContext.Provider>
   );
-}
+};
 
-export default AppContext;
+export default AppProvider;
