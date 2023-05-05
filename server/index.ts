@@ -12,9 +12,9 @@ app
   .get("/user", async (_, res) => {
     try {
       const user = await getUser();
-      res.send(user).status(200);
+      res.status(200).send(user);
     } catch (e) {
-      res.send("Whoops!").status(500);
+      res.status(500).send("Whoops!");
     }
   })
   .get("/recipes", async (_, res) => {
@@ -22,7 +22,7 @@ app
       const recipes = await getRecipes();
       res.send(recipes).status(200);
     } catch (e) {
-      res.send("Whoops!").status(500);
+      res.status(500).send("Whoops!");
     }
   })
   .get("/recipe/:id", async (req, res) => {
@@ -31,12 +31,12 @@ app
       const recipes = await getRecipe(id);
 
       if (!recipes) {
-        res.send(`Recipe ${id} not found`).status(404);
+        res.status(404).send(`Recipe ${id} not found`);
       }
 
-      res.send(recipes).status(200);
+      res.status(200).send(recipes);
     } catch (e) {
-      res.send("Whoops!").status(500);
+      res.status(500).send("Whoops!");
     }
   })
   .listen(PORT, () => {
