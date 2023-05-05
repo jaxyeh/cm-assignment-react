@@ -1,24 +1,26 @@
 # Carb Manager Dev React Assignment
 
 Welcome to Carb Manager Dev React Assignment.
-There is also a Vue version of this assignment.  Both assignments are equally scored, feel free to choose one or the other, whichever you feel more comfortable with.
+There is also a Vue version of this assignment. Both assignments are equally scored, feel free to choose one or the other, whichever you feel more comfortable with.
+
 - [cm-assignment-vue](https://github.com/carb-manager/cm-assignment-vue)
 
 ## Project structure
 
 The project consists of 2 main modules:
+
 - `node.js` backend:
-    - Express server listening on `http://127.0.0.1:8080`.
-    - `http://127.0.0.1:8080/recipes` - returns recipes list.
-    - `http://127.0.0.1:8080/recipe/:id` - returns a single recipe.
-    - `http://127.0.0.1:8080/user` - returns user settings object.
-    - Data for all endpoints is mocked.
-    - Feel free to modify all files under the `./server` directory except data mocks and corresponding interfaces.
+  - Express server listening on `http://127.0.0.1:8080`.
+  - `http://127.0.0.1:8080/recipes` - returns recipes list.
+  - `http://127.0.0.1:8080/recipe/:id` - returns a single recipe.
+  - `http://127.0.0.1:8080/user` - returns user settings object.
+  - Data for all endpoints is mocked.
+  - Feel free to modify all files under the `./server` directory except data mocks and corresponding interfaces.
 - front-end application:
-    - The dev sever listens on `http://localhost:3000`
-    - `http://localhost:3000/recipes` - renders recipes list
-    - `http://127.0.0.1:8080/recipe/:id` - renders a single recipe
-    - Feel free to modify anything
+  - The dev sever listens on `http://localhost:3000`
+  - `http://localhost:3000/recipes` - renders recipes list
+  - `http://127.0.0.1:8080/recipe/:id` - renders a single recipe
+  - Feel free to modify anything
 
 ## The challenge
 
@@ -44,17 +46,21 @@ We're not aiming for perfection. We don't want you to spend too much time on the
 If a feature/change you'd like to implement is going take too much time just leave your comments in the **Refactor notes** section below.
 Include the reason for the refactor and the proposed solution. Also, document all the changes you made e.g.:
 
-- *"Refactored `<Button>` component props to make it re-usable"*
-- *"TODO: Define custom validators for all `<Button>` component props"*
+- _"Refactored `<Button>` component props to make it re-usable"_
+- _"TODO: Define custom validators for all `<Button>` component props"_
 
 We suggest you don't spend more than 2h on this challenge.
 
 ## Refactor notes
 
-- `{note_1}`
-- `{note_2}`
-- `…`
-- `{note_n}`
+- Add TanStack Query library (Automatically handles retries and caching)
+- Add global User state through AppProvider and useContext API
+- Migrated some JavaScript files to TypeScript (`RecipesView.tsx` & `EnergyItem.tsx`), so code is fully typed with interfaces
+- Add & pasted Data Types from backend (Since CRA is unable to allow import from out of `src` folder, out of scope)
+- Improved `RecipesView.tsx` component code using TanStack Query wrapper (better state handling)
+- Refactored Energy related computing into a separate `EnergyItem.tsx` file, useMemo to avoid re-rendering
+- Add i18n library for translation along with basic hard-coded translations data
+- Improved Error Handling (Fix backend API to properly return 404/500 HTTP Status Code)
 
 ## Submission
 
