@@ -18,7 +18,7 @@ const EnergyItem: FC<EnergyItemProps> = ({
   const [value, setValue] = useState<number>(energyValue);
   const [label, setLabel] = useState<string>("");
 
-  const round = (num: number, decimalPlaces = 2) => {
+  const round = (num: number, decimalPlaces: number = 2) => {
     const p = Math.pow(10, decimalPlaces);
     return Math.round(num * p) / p;
   };

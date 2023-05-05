@@ -2,14 +2,13 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import NutrientItem from "../components/NutrientItem";
+import EnergyItem from "../components/EnergyItem";
 import getRecipes from "../api/getRecipes";
 import { AppContext } from "../store/app";
 import { Nutrient, NutrientName, Recipe } from "../types/recipe";
 import "./RecipesView.css";
-
 // @ts-ignore
 import trophyIcon from "../assets/trophy.svg";
-import EnergyItem from "../components/EnergyItem";
 
 const RecipesView = () => {
   const navigate = useNavigate();
@@ -53,7 +52,7 @@ const RecipesView = () => {
           <div className="list">
             {recipes?.map((recipe, index) => (
               <div
-                key={index}
+                key={recipe.id}
                 className="recipe-item"
                 onClick={() => goToSingleRecipe(recipe.id)}
               >
