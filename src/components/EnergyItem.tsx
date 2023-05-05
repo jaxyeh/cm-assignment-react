@@ -1,4 +1,5 @@
 import React, { FC, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import NutrientItem from "./NutrientItem";
 import { Unit } from "../types/recipe";
 
@@ -15,6 +16,7 @@ const EnergyItem: FC<EnergyItemProps> = ({
   defaultUnit,
   displayLabel,
 }) => {
+  const { t } = useTranslation();
   const [value, setValue] = useState<number>(energyValue);
   const [label, setLabel] = useState<string>("");
 
@@ -43,7 +45,7 @@ const EnergyItem: FC<EnergyItemProps> = ({
 
   return (
     <NutrientItem
-      name={displayLabel ? label : null}
+      name={displayLabel ? t(label) : null}
       value={value}
       className="energy"
     />

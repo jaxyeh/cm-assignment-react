@@ -6,17 +6,19 @@ import EnergyItem from "../components/EnergyItem";
 import getRecipes from "../api/getRecipes";
 import { AppContext } from "../store/app";
 import { Nutrient, NutrientName, Recipe } from "../types/recipe";
+import { useTranslation } from "react-i18next";
 import "./RecipesView.css";
 // @ts-ignore
 import trophyIcon from "../assets/trophy.svg";
 
 const RecipesView = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user } = useContext(AppContext);
 
   const [recipes, setReceipes] = useState<Recipe[] | undefined>(undefined);
 
-  const { status, data, isLoading, error } = useQuery<Recipe[], Error>({
+  const { data, isFetching, status, error } = useQuery<Recipe[], Error>({
     queryKey: ["receipes"],
     queryFn: getRecipes,
     onSuccess: setReceipes,
@@ -37,7 +39,7 @@ const RecipesView = () => {
 
   return (
     <div className="recipes">
-      {status === "loading" ? (
+      {isFetching ? (
         "Loading..."
       ) : status === "error" ? (
         <span>Error: {error.message}</span>
@@ -75,21 +77,21 @@ const RecipesView = () => {
                       <React.Fragment key={value}>
                         {nutrientName === NutrientName.Carbs && (
                           <NutrientItem
-                            name={index === 0 ? "Carbs" : null}
+                            name={index === 0 ? t("Carbs") : null}
                             value={value + "g"}
                             className="carbs"
                           />
                         )}
                         {nutrientName === NutrientName.Proteins && (
                           <NutrientItem
-                            name={index === 0 ? "Protein" : null}
+                            name={index === 0 ? t("Protein") : null}
                             value={value + "g"}
                             className="protein"
                           />
                         )}
                         {nutrientName === NutrientName.Fat && (
                           <NutrientItem
-                            name={index === 0 ? "Fat" : null}
+                            name={index === 0 ? t("Fat") : null}
                             value={value + "g"}
                             className="fat"
                           />
@@ -110,12 +112,12 @@ const RecipesView = () => {
                   {recipe.isPremium && (
                     <div className="tag premium">
                       <img className="trophy" src={trophyIcon} alt="Premium" />
-                      Premium
+                      {t("Premium")}
                     </div>
                   )}
                   {recipe.tags.map((tag: any) => (
                     <div className="tag" key={tag}>
-                      {tag}
+                      {t(tag)}
                     </div>
                   ))}
                 </div>
@@ -124,7 +126,6 @@ const RecipesView = () => {
           </div>
         </>
       )}
-      {!recipes?.length && !isLoading && <div>Unable to load recipes</div>}
     </div>
   );
 };

@@ -7,6 +7,7 @@ import RecipesView from "./views/RecipesView";
 import { useQuery } from "@tanstack/react-query";
 import getUser from "./api/getUser";
 import { AppContext } from "./store/app";
+import "./i18n";
 
 function App() {
   const { setUser } = useContext(AppContext);
