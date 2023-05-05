@@ -1,19 +1,22 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import NutrientItem from "../components/NutrientItem";
 import getRecipes from "../api/getRecipes";
-import trophyIcon from "../assets/trophy.svg";
 import { AppContext } from "../store/app";
-
+import { Nutrient, NutrientName, Recipe } from "../types/recipe";
 import "./RecipesView.css";
-import { useQuery } from "@tanstack/react-query";
-import { Nutrient, NutrientName, Recipe, Unit } from "../types/recipe";
+
+// @ts-ignore
+import trophyIcon from "../assets/trophy.svg";
+import EnergyItem from "../components/EnergyItem";
 
 const RecipesView = () => {
   const navigate = useNavigate();
   const { user } = useContext(AppContext);
 
   const [recipes, setReceipes] = useState<Recipe[] | undefined>(undefined);
+
   const { status, data, isLoading, error } = useQuery<Recipe[], Error>({
     queryKey: ["receipes"],
     queryFn: getRecipes,
@@ -32,41 +35,6 @@ const RecipesView = () => {
       ),
     [data]
   );
-
-  console.log("RERENDER");
-  console.log("user:", user);
-  console.log("receipes:", recipes);
-
-  const getEnergyValue = useCallback(
-    (recipeUnit: Unit, value: number) => {
-      let label;
-      if (recipeUnit !== user?.units.energy) {
-        if (recipeUnit === "kilojoule") {
-          label = "kCal";
-          value = value / 4.184;
-        } else {
-          label = "kJ";
-          value = value * 4.184;
-        }
-      } else {
-        if (recipeUnit === "kilojoule") {
-          label = "kJ";
-        } else {
-          label = "kCal";
-        }
-      }
-      return {
-        label,
-        value,
-      };
-    },
-    [user?.units.energy]
-  );
-
-  const round = React.useCallback((num: number, decimalPlaces = 2) => {
-    const p = Math.pow(10, decimalPlaces);
-    return Math.round(num * p) / p;
-  }, []);
 
   return (
     <div className="recipes">
@@ -128,14 +96,11 @@ const RecipesView = () => {
                           />
                         )}
                         {nutrientName === NutrientName.Energy && (
-                          <NutrientItem
-                            name={
-                              index === 0
-                                ? getEnergyValue(unit, value).label
-                                : null
-                            }
-                            value={round(getEnergyValue(unit, value).value)}
-                            className="energy"
+                          <EnergyItem
+                            energyValue={value}
+                            energyUnit={unit}
+                            defaultUnit={user?.units.energy}
+                            displayLabel={index === 0}
                           />
                         )}
                       </React.Fragment>
